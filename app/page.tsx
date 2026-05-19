@@ -390,65 +390,65 @@ export default function Home() {
       </section>
 
       <section id="neden-biz" className="relative z-10 px-4 py-20 md:px-8">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.06] shadow-2xl shadow-black/30">
-            <img
-              src={heroImages[1]}
-              alt="Oto servis motor bakım hizmeti"
-              className="h-full min-h-[420px] w-full object-cover"
-            />
+  <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+    <div className="overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.06] shadow-2xl shadow-black/30">
+      <img
+        src={heroImages[1]}
+        alt="Antalya oto servis motor bakım hizmeti"
+        className="h-full min-h-[420px] w-full object-cover"
+      />
+    </div>
+
+    <div className="rounded-[36px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl md:p-10">
+      <div className="inline-flex items-center gap-2 rounded-full border border-orange-300/20 bg-orange-400/10 px-4 py-2 text-sm font-bold text-orange-100">
+        <BadgeCheck className="h-4 w-4" />
+        Antalya’da 7/24 Mobil Servis
+      </div>
+
+      <h2 className="mt-6 text-3xl font-black tracking-tight md:text-5xl">
+        Aracınızın sorununu hızlıca anlayıp en uygun servis desteğini sunuyoruz.
+      </h2>
+
+      <p className="mt-6 text-base leading-8 text-white/65">
+        07AutoRepair Premium Servis olarak Antalya’da arıza tespit, yağ
+        değişimi, ön düzen kontrolü ve yerinde onarım hizmetleri sunuyoruz.
+        Aracınızda yaşadığınız sorunu bize iletin, bulunduğunuz konuma ve
+        arızanın durumuna göre en doğru yönlendirmeyi sağlayalım.
+      </p>
+
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        {kanitlar.map((item) => (
+          <div
+            key={item}
+            className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/20 p-4"
+          >
+            <CheckCircle2 className="h-5 w-5 shrink-0 text-red-300" />
+            <span className="text-sm font-semibold text-white/75">
+              {item}
+            </span>
           </div>
+        ))}
+      </div>
 
-          <div className="rounded-[36px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl md:p-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-orange-300/20 bg-orange-400/10 px-4 py-2 text-sm font-bold text-orange-100">
-              <BadgeCheck className="h-4 w-4" />
-              Güven veren servis yapısı
-            </div>
+      <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+        <a
+          href={whatsappLink}
+          target="_blank"
+          className="rounded-full bg-gradient-to-r from-red-500 to-orange-400 px-7 py-4 text-center text-sm font-black text-white shadow-lg shadow-red-500/25 transition hover:scale-[1.03]"
+        >
+          WhatsApp’tan Yaz
+        </a>
 
-            <h2 className="mt-6 text-3xl font-black tracking-tight md:text-5xl">
-              Müşteri önce sorunu anlatır, sonra en uygun servis yönlendirmesi
-              yapılır.
-            </h2>
-
-            <p className="mt-6 text-base leading-8 text-white/65">
-              07AutoRepair Premium Servis için hazırlanan bu sayfa; acil arama,
-              WhatsApp yönlendirme, servis detayları, görsel kanıt alanları ve
-              güven veren içeriklerle dönüşüm odaklı tasarlandı.
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {kanitlar.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/20 p-4"
-                >
-                  <CheckCircle2 className="h-5 w-5 shrink-0 text-red-300" />
-                  <span className="text-sm font-semibold text-white/75">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-             <a
-  href={whatsappLink}
-  target="_blank"
-  className="rounded-full bg-gradient-to-r from-red-500 to-orange-400 px-7 py-4 text-center text-sm font-black text-white shadow-lg shadow-red-500/25 transition hover:scale-[1.03]"
->
-  WhatsApp’tan Yaz
-</a>
-              <a
-                href={telefonLink}
-                className="rounded-full border border-white/15 px-7 py-4 text-center text-sm font-black text-white transition hover:bg-white/10"
-              >
-                Telefonla Ara
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
+        <a
+          href={telefonLink}
+          className="rounded-full border border-red-400/40 bg-red-500/10 px-7 py-4 text-center text-sm font-black text-red-100 transition hover:border-red-300/60 hover:bg-red-500/20"
+        >
+          Telefonla Ara
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
       <section className="relative z-10 px-4 py-20 md:px-8">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-[40px] border border-white/10 bg-gradient-to-br from-red-500 via-orange-500 to-yellow-400 p-1 shadow-2xl shadow-red-500/20">
           <div className="grid gap-8 rounded-[36px] bg-[#080d16] p-6 md:grid-cols-[1fr_0.8fr] md:p-10 lg:p-12">
@@ -625,46 +625,86 @@ export default function Home() {
           </div>
 
           <div className="rounded-[36px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl md:p-8">
-            <h3 className="text-2xl font-black">Hızlı servis talebi</h3>
-            <p className="mt-3 text-sm leading-7 text-white/60">
-              Butona basınca WhatsApp hazır mesajla açılır. Müşteri sadece araç
-              bilgisini ve konumunu ekleyerek gönderebilir.
-            </p>
+  <div className="inline-flex items-center gap-2 rounded-full border border-red-400/30 bg-red-500/10 px-4 py-2 text-sm font-bold text-red-100">
+    <Clock3 className="h-4 w-4 text-red-300" />
+    7/24 Servis Hattı
+  </div>
 
-            <div className="mt-6 rounded-[28px] border border-white/10 bg-black/30 p-5">
-              <p className="text-sm font-bold text-white/50">Hazır mesaj</p>
-              <p className="mt-3 text-base leading-8 text-white/80">
-                Merhaba, 07AutoRepair Premium Servis web sitesinden yazıyorum.
-                Aracım için destek almak istiyorum.
-              </p>
-            </div>
+  <h3 className="mt-5 text-2xl font-black md:text-3xl">
+    Aracınız için hızlı destek alın.
+  </h3>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <a
-                href={whatsappLink}
-                target="_blank"
-                className="rounded-2xl bg-gradient-to-r from-red-500 to-orange-400 px-6 py-4 text-center text-sm font-black text-white transition hover:scale-[1.03]"
-              >
-                WhatsApp’tan Yaz
-              </a>
-              <a
-                href={telefonLink}
-                className="rounded-2xl border border-white/15 px-6 py-4 text-center text-sm font-black text-white transition hover:bg-white/10"
-              >
-                Hemen Ara
-              </a>
-            </div>
+  <p className="mt-4 text-sm leading-7 text-white/65 md:text-base">
+    Aracınızda arıza, yağ değişimi, ön düzen problemi veya yolda kalma gibi
+    bir durum varsa bizimle hemen iletişime geçebilirsiniz. Konumunuzu ve
+    aracınızdaki sorunu ilettiğinizde en uygun servis yönlendirmesi yapılır.
+  </p>
 
-            <div className="mt-6 overflow-hidden rounded-[28px] border border-white/10">
-              <iframe
-                title="Antalya Harita"
-                src="https://www.google.com/maps?q=Antalya&output=embed"
-                className="h-[320px] w-full border-0 grayscale"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </div>
+  <div className="mt-6 grid gap-4">
+    <div className="flex items-start gap-4 rounded-[24px] border border-white/10 bg-black/25 p-5">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-red-500/20 text-red-300">
+        <MapPin className="h-5 w-5" />
+      </div>
+      <div>
+        <p className="font-black text-white">Bulunduğunuz konumu paylaşın</p>
+        <p className="mt-1 text-sm leading-6 text-white/55">
+          Antalya içi mobil servis için konum bilgisi hızlı yönlendirme sağlar.
+        </p>
+      </div>
+    </div>
+
+    <div className="flex items-start gap-4 rounded-[24px] border border-white/10 bg-black/25 p-5">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-orange-500/20 text-orange-300">
+        <Car className="h-5 w-5" />
+      </div>
+      <div>
+        <p className="font-black text-white">Araç bilgilerinizi yazın</p>
+        <p className="mt-1 text-sm leading-6 text-white/55">
+          Marka, model ve yaşanan arıza bilgisi servis sürecini hızlandırır.
+        </p>
+      </div>
+    </div>
+
+    <div className="flex items-start gap-4 rounded-[24px] border border-white/10 bg-black/25 p-5">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-sky-500/20 text-sky-300">
+        <Wrench className="h-5 w-5" />
+      </div>
+      <div>
+        <p className="font-black text-white">Servis desteği başlasın</p>
+        <p className="mt-1 text-sm leading-6 text-white/55">
+          Arıza tespit, yerinde onarım veya bakım için uygun çözüm belirlenir.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+    <a
+      href={whatsappLink}
+      target="_blank"
+      className="rounded-2xl bg-gradient-to-r from-red-500 to-orange-400 px-6 py-4 text-center text-sm font-black text-white shadow-lg shadow-red-500/25 transition hover:scale-[1.03]"
+    >
+      WhatsApp’tan Servis İste
+    </a>
+
+    <a
+      href={telefonLink}
+      className="rounded-2xl border border-red-400/40 bg-red-500/10 px-6 py-4 text-center text-sm font-black text-red-100 transition hover:border-red-300/60 hover:bg-red-500/20"
+    >
+      Hemen Ara
+    </a>
+  </div>
+
+  <div className="mt-6 overflow-hidden rounded-[28px] border border-white/10 bg-black/20">
+    <iframe
+      title="Antalya Harita"
+      src="https://www.google.com/maps?q=Antalya&output=embed"
+      className="h-[320px] w-full border-0 grayscale"
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    />
+  </div>
+</div>
         </div>
       </section>
 
