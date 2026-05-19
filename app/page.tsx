@@ -134,19 +134,13 @@ export default function Home() {
 
       <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#070b12]/80 backdrop-blur-2xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-          <a href="#" className="group flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-orange-400 shadow-lg shadow-red-500/25">
-              <Wrench className="h-6 w-6 text-white" />
-            </div>
-            <div>
-              <p className="text-base font-black leading-none tracking-tight md:text-lg">
-                07AutoRepair
-              </p>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.25em] text-red-300">
-                Premium Servis
-              </p>
-            </div>
-          </a>
+      <a href="#" className="group flex items-center gap-3">
+  <img
+    src="/logo.png"
+    alt="07AutoRepair Premium Servis Logo"
+    className="h-14 w-auto object-contain md:h-16"
+  />
+</a>
 
           <nav className="hidden items-center gap-8 md:flex">
             {menuItems.map((item) => (
