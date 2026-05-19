@@ -156,14 +156,138 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#070b12] text-white">
+    <main className="relative min-h-screen overflow-hidden bg-[#070408] text-white">
+      <style>{`
+        @keyframes cinemaGlow {
+          0%, 100% { opacity: .45; transform: translateY(0) scale(1); }
+          50% { opacity: .85; transform: translateY(-18px) scale(1.08); }
+        }
+
+        @keyframes lightSweep {
+          0% { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+          25% { opacity: .18; }
+          100% { transform: translateX(160%) skewX(-18deg); opacity: 0; }
+        }
+
+        @keyframes softFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+
+        @keyframes filmScan {
+          0% { transform: translateY(-100%); opacity: 0; }
+          40% { opacity: .18; }
+          100% { transform: translateY(100%); opacity: 0; }
+        }
+
+        .cinema-shell {
+          background:
+            radial-gradient(circle at 12% 8%, rgba(239, 68, 68, .20), transparent 28%),
+            radial-gradient(circle at 88% 18%, rgba(249, 115, 22, .18), transparent 30%),
+            radial-gradient(circle at 50% 82%, rgba(14, 165, 233, .10), transparent 36%),
+            linear-gradient(180deg, #070408 0%, #0b111d 42%, #070408 100%);
+        }
+
+        .cinema-grain {
+          background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.12) 1px, transparent 0);
+          background-size: 22px 22px;
+        }
+
+        .cinema-grid {
+          background-image:
+            linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+          background-size: 52px 52px;
+        }
+
+        .cinema-vignette {
+          background:
+            radial-gradient(circle at center, transparent 0%, transparent 48%, rgba(0,0,0,.55) 100%),
+            linear-gradient(90deg, rgba(0,0,0,.38), transparent 16%, transparent 84%, rgba(0,0,0,.38));
+        }
+
+        .cinema-card {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cinema-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          padding: 1px;
+          background: linear-gradient(135deg, rgba(239,68,68,.65), rgba(249,115,22,.45), rgba(255,255,255,.10));
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+        }
+
+        .cinema-card::after {
+          content: "";
+          position: absolute;
+          top: -20%;
+          bottom: -20%;
+          left: -45%;
+          width: 38%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+          animation: lightSweep 6s ease-in-out infinite;
+          pointer-events: none;
+        }
+
+        .cinema-image {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cinema-image::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(to top, rgba(7,11,18,.82), transparent 52%),
+            linear-gradient(120deg, rgba(239,68,68,.16), transparent 40%, rgba(249,115,22,.12));
+          pointer-events: none;
+        }
+
+        .cinema-scan {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cinema-scan::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to bottom, transparent, rgba(255,255,255,.08), transparent);
+          animation: filmScan 7s linear infinite;
+          pointer-events: none;
+        }
+
+        .cinema-float {
+          animation: softFloat 5.5s ease-in-out infinite;
+        }
+
+        .cinema-glow {
+          animation: cinemaGlow 7s ease-in-out infinite;
+        }
+      `}</style>
+
+      <div className="pointer-events-none fixed inset-0 z-0 cinema-shell" />
+      <div className="pointer-events-none fixed inset-0 z-0 cinema-grid opacity-30" />
+      <div className="pointer-events-none fixed inset-0 z-0 cinema-grain opacity-[0.045]" />
+      <div className="pointer-events-none fixed inset-0 z-0 cinema-vignette" />
+
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute left-[-10%] top-[-10%] h-[420px] w-[420px] rounded-full bg-[#ff2d2d]/20 blur-[120px]" />
-        <div className="absolute right-[-10%] top-[25%] h-[500px] w-[500px] rounded-full bg-[#0ea5e9]/20 blur-[140px]" />
-        <div className="absolute bottom-[-15%] left-[20%] h-[520px] w-[520px] rounded-full bg-[#f97316]/10 blur-[150px]" />
+        <div className="cinema-glow absolute left-[-10%] top-[-10%] h-[420px] w-[420px] rounded-full bg-[#ff2d2d]/20 blur-[120px]" />
+        <div className="cinema-glow absolute right-[-10%] top-[25%] h-[500px] w-[500px] rounded-full bg-[#0ea5e9]/20 blur-[140px]" />
+        <div className="cinema-glow absolute bottom-[-15%] left-[20%] h-[520px] w-[520px] rounded-full bg-[#f97316]/10 blur-[150px]" />
       </div>
 
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#070b12]/80 backdrop-blur-2xl">
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#070b12]/75 backdrop-blur-2xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
           <a
             href="#"
@@ -242,9 +366,9 @@ export default function Home() {
       <section className="relative z-10 px-4 pb-20 pt-32 md:px-8 md:pb-28 md:pt-40">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-400/30 bg-red-500/10 px-4 py-2 text-sm font-bold text-red-100 shadow-xl shadow-red-500/10">
               <Sparkles className="h-4 w-4 text-red-300" />
@@ -292,7 +416,7 @@ export default function Home() {
               ].map(([big, small]) => (
                 <div
                   key={big}
-                  className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-xl"
+                  className="cinema-card rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-xl"
                 >
                   <p className="text-3xl font-black text-white">{big}</p>
                   <p className="mt-1 text-sm font-semibold text-white/60">
@@ -304,20 +428,20 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="relative"
+            initial={{ opacity: 0, scale: 0.96, y: 20, filter: "blur(12px)" }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+            className="relative cinema-float"
           >
             <div className="absolute -inset-4 rounded-[48px] bg-gradient-to-br from-red-500/30 via-sky-500/20 to-orange-400/20 blur-2xl" />
-            <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-white/10 shadow-2xl shadow-black/40 backdrop-blur-xl">
-              <img
-                src={heroImages[0]}
-                alt="Antalya mobil oto servis arıza tespit"
-                className="h-[430px] w-full object-cover md:h-[620px]"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070b12] via-[#070b12]/25 to-transparent" />
+            <div className="cinema-scan relative overflow-hidden rounded-[36px] border border-white/10 bg-white/10 shadow-2xl shadow-black/40 backdrop-blur-xl">
+              <div className="cinema-image">
+                <img
+                  src={heroImages[0]}
+                  alt="Antalya mobil oto servis arıza tespit"
+                  className="h-[430px] w-full object-cover md:h-[620px]"
+                />
+              </div>
 
               <div className="absolute bottom-5 left-5 right-5 rounded-[28px] border border-white/10 bg-black/45 p-5 backdrop-blur-2xl md:p-6">
                 <div className="flex items-start gap-4">
@@ -400,11 +524,11 @@ export default function Home() {
               return (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.55, delay: index * 0.08 }}
-                  className="group rounded-[32px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl transition hover:-translate-y-2 hover:border-red-400/40 hover:bg-white/[0.09]"
+                  className="cinema-card group rounded-[32px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl transition hover:-translate-y-2 hover:border-red-400/40 hover:bg-white/[0.09]"
                 >
                   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-orange-400 shadow-lg shadow-red-500/20">
                     <Icon className="h-7 w-7 text-white" />
@@ -435,7 +559,7 @@ export default function Home() {
 
       <section id="neden-biz" className="relative z-10 px-4 py-20 md:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.06] shadow-2xl shadow-black/30">
+          <div className="cinema-image overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.06] shadow-2xl shadow-black/30">
             <img
               src={heroImages[1]}
               alt="Antalya oto servis motor bakım hizmeti"
@@ -443,7 +567,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="rounded-[36px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl md:p-10">
+          <div className="cinema-card rounded-[36px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl md:p-10">
             <div className="inline-flex items-center gap-2 rounded-full border border-orange-300/20 bg-orange-400/10 px-4 py-2 text-sm font-bold text-orange-100">
               <BadgeCheck className="h-4 w-4" />
               Antalya’da 7/24 Mobil Servis
@@ -498,7 +622,7 @@ export default function Home() {
 
       <section className="relative z-10 px-4 py-20 md:px-8">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-[40px] border border-white/10 bg-gradient-to-br from-red-500 via-orange-500 to-yellow-400 p-1 shadow-2xl shadow-red-500/20">
-          <div className="grid gap-8 rounded-[36px] bg-[#080d16] p-6 md:grid-cols-[1fr_0.8fr] md:p-10 lg:p-12">
+          <div className="grid gap-8 rounded-[36px] bg-[#080d16]/95 p-6 md:grid-cols-[1fr_0.8fr] md:p-10 lg:p-12">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.3em] text-red-200">
                 Acil durum
@@ -535,14 +659,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[32px] border border-white/10">
+            <div className="cinema-image relative overflow-hidden rounded-[32px] border border-white/10">
               <img
                 src={heroImages[2]}
                 alt="Antalya yerinde oto onarım hizmeti"
                 className="h-full min-h-[360px] w-full object-cover"
               />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
 
               <div className="absolute bottom-5 left-5 right-5">
                 <a
@@ -562,7 +684,7 @@ export default function Home() {
       <section id="kurumsal" className="relative z-10 px-4 py-20 md:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-            <div className="rounded-[40px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl md:p-10">
+            <div className="cinema-card rounded-[40px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl md:p-10">
               <div className="inline-flex items-center gap-2 rounded-full border border-yellow-300/20 bg-yellow-400/10 px-4 py-2 text-sm font-bold text-yellow-100">
                 <BriefcaseBusiness className="h-4 w-4" />
                 Kurumsal Servis ve Destek
@@ -626,7 +748,7 @@ export default function Home() {
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.06]">
+              <div className="cinema-image overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.06]">
                 <img
                   src="/07auto-mobil-servis.jpg"
                   alt="Kurumsal firmalara mobil oto servis desteği"
@@ -634,7 +756,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.06] sm:mt-12">
+              <div className="cinema-image overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.06] sm:mt-12">
                 <img
                   src="/07auto-aku-destek.jpg"
                   alt="Firma araçları için akü ve servis desteği"
@@ -642,7 +764,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.06] sm:col-span-2">
+              <div className="cinema-image overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.06] sm:col-span-2">
                 <img
                   src="/07auto-lastik-mudahale.jpg"
                   alt="Kurumsal araçlar için lastik ve yol destek hizmeti"
@@ -655,56 +777,54 @@ export default function Home() {
       </section>
 
       <section
-  id="galeri"
-  className="relative z-10 px-4 py-20 md:px-8 md:py-28"
->
-  <div className="mx-auto max-w-7xl">
-    <div className="mb-12 text-center">
-      <p className="text-sm font-black uppercase tracking-[0.3em] text-red-300">
-        Servis Sürecimiz
-      </p>
+        id="galeri"
+        className="relative z-10 px-4 py-20 md:px-8 md:py-28"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <p className="text-sm font-black uppercase tracking-[0.3em] text-red-300">
+              Servis Sürecimiz
+            </p>
 
-      <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-black tracking-tight md:text-5xl">
-        Aracınıza müdahale ederken kullandığımız ekipmanları ve sahadaki servis
-        sürecimizi yakından inceleyin.
-      </h2>
+            <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-black tracking-tight md:text-5xl">
+              Aracınıza müdahale ederken kullandığımız ekipmanları ve sahadaki servis
+              sürecimizi yakından inceleyin.
+            </h2>
 
-      <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/60">
-        Arıza tespitinden motor kontrolüne, akü desteğinden yerinde onarıma
-        kadar tüm süreçlerde hızlı, düzenli ve güven veren bir servis deneyimi
-        sunuyoruz.
-      </p>
-    </div>
-
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {galeri.map((item, index) => (
-        <motion.div
-          key={item.title}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.55, delay: index * 0.05 }}
-          className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.06]"
-        >
-          <img
-            src={item.img}
-            alt={item.title}
-            className="h-72 w-full object-cover transition duration-700 group-hover:scale-110"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-
-          <div className="absolute bottom-5 left-5 right-5">
-            <p className="text-xl font-black">{item.title}</p>
-            <p className="mt-2 text-sm leading-6 text-white/65">
-              Antalya’da 7/24 mobil servis ve yerinde destek.
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/60">
+              Arıza tespitinden motor kontrolüne, akü desteğinden yerinde onarıma
+              kadar tüm süreçlerde hızlı, düzenli ve güven veren bir servis deneyimi
+              sunuyoruz.
             </p>
           </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {galeri.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.55, delay: index * 0.05 }}
+                className="group cinema-image relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.06]"
+              >
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="h-72 w-full object-cover transition duration-700 group-hover:scale-110"
+                />
+
+                <div className="absolute bottom-5 left-5 right-5 z-10">
+                  <p className="text-xl font-black">{item.title}</p>
+                  <p className="mt-2 text-sm leading-6 text-white/65">
+                    Antalya’da 7/24 mobil servis ve yerinde destek.
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="relative z-10 px-4 py-20 md:px-8">
         <div className="mx-auto max-w-7xl">
@@ -712,7 +832,7 @@ export default function Home() {
             {yorumlar.map((item) => (
               <div
                 key={item.name}
-                className="rounded-[32px] border border-white/10 bg-white/[0.06] p-7 backdrop-blur-xl"
+                className="cinema-card rounded-[32px] border border-white/10 bg-white/[0.06] p-7 backdrop-blur-xl"
               >
                 <div className="mb-5 flex gap-1 text-orange-300">
                   {[1, 2, 3, 4, 5].map((star) => (
@@ -793,7 +913,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="rounded-[36px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl md:p-8">
+          <div className="cinema-card rounded-[36px] border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl md:p-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-red-400/30 bg-red-500/10 px-4 py-2 text-sm font-bold text-red-100">
               <Clock3 className="h-4 w-4 text-red-300" />
               7/24 Servis Hattı
