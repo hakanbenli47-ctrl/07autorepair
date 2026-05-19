@@ -134,11 +134,14 @@ export default function Home() {
 
       <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#070b12]/80 backdrop-blur-2xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-      <a href="#" className="group flex items-center gap-3">
+      <a
+  href="#"
+  className="group relative block h-16 w-[200px] overflow-hidden md:h-20 md:w-[260px]"
+>
   <img
     src="/logo.png"
     alt="07AutoRepair Premium Servis Logo"
-    className="h-14 w-[220px] object-contain md:h-16 md:w-[280px]"
+    className="absolute left-1/2 top-1/2 h-[150px] w-[250px] -translate-x-1/2 -translate-y-1/2 object-contain md:h-[200px] md:w-[330px]"
   />
 </a>
 
