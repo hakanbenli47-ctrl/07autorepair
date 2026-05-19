@@ -138,7 +138,7 @@ export default function Home() {
   <img
     src="/logo.png"
     alt="07AutoRepair Premium Servis Logo"
-    className="h-16 w-auto object-contain md:h-20"
+    className="h-14 w-[220px] object-contain md:h-16 md:w-[280px]"
   />
 </a>
 
